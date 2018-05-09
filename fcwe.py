@@ -271,15 +271,15 @@ class YieldPage(tk.Frame):
         ferrite=(0.8-carbon)/(0.78)*100
         pearlite=100-ferrite
         x=ferrite/100
-        if grainsize==0 or sulphur==0:
-            print("no")
-        else:
+        
+        yieldst=0
+        if sulphur !=0 and grainsize !=0: 
             yieldst=x**(0.33)*(35+58*(mn)+17.4*(1.0/(grainsize**(0.5))))+(1-x**0.33)*(178+3.8*(1.0/(sulphur**(0.5))))+63*(silicon)+425*nf
         Yield = Entry(self)
         Yield.pack()
         Yield.delete(0, "end")
         Yield.insert(0, yieldst)
-
+        
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
@@ -305,30 +305,30 @@ class YieldPage(tk.Frame):
 
         main.pack()
 
-        l_c.pack()
-        l_rec_c.pack()
-        e_c.pack()
+        l_c.pack(pady=10,padx=10)
+        l_rec_c.pack(pady=10,padx=10)
+        e_c.pack(pady=10,padx=10)
         carbon = float(e_c.get())
 
-        l_rec_f.pack()
-        e_rec_f.pack()
+        l_rec_f.pack(pady=10,padx=10)
+        e_rec_f.pack(pady=10,padx=10)
         fer=(0.8-carbon)/(0.78)*100
         e_rec_f.insert(0,fer)
 
-        l_rec_p.pack()
-        e_rec_p.pack()
+        l_rec_p.pack(pady=10,padx=10)
+        e_rec_p.pack(pady=10,padx=10)
         e_rec_p.insert(0,100-fer)
 
-        l_rec_mn.pack()
-        e_rec_mn.pack()
+        l_rec_mn.pack(pady=10,padx=10)
+        e_rec_mn.pack(pady=10,padx=10)
         mn = (0.35-carbon)*6
         e_rec_mn.insert(0,mn)
 
-        l_gsize.pack()
-        e_gsize.pack()
+        l_gsize.pack(pady=10,padx=10)
+        e_gsize.pack(pady=10,padx=10)
         
-        l_s.pack()
-        e_s.pack()
+        l_s.pack(pady=10,padx=10)
+        e_s.pack(pady=10,padx=10)
         
         l_si.pack()
         e_si.pack()
