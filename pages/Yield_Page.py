@@ -65,12 +65,12 @@ class YieldPage(tk.Frame):
                     command=lambda: controller.show_frame(StartPage))
         button1.pack()
 
-    def enterRecValues(self):
+    def enterRecValues(self):          # shows recommended amounts on the basis of carbon content entered by the user
         carbon = float(self.e_c.get())
         ferrite=(0.8-carbon)/(0.78)*100
 
-        self.e_rec_f.delete(0,"end")
-        self.e_rec_f.insert(0,ferrite)
+        self.e_rec_f.delete(0,"end")  # clears previous value(if any) from the bar
+        self.e_rec_f.insert(0,ferrite)# inserts new value
 
         mn = (0.35-carbon)*6
 
@@ -80,7 +80,7 @@ class YieldPage(tk.Frame):
         self.e_rec_p.delete(0,"end")
         self.e_rec_p.insert(0,100-ferrite)
 
-    def textEntries(self):
+    def textEntries(self):              # takes the values entered by the user
         carbon = float(self.e_c.get())
         ferrite=(0.8-carbon)/(0.78)*100
         mn = (0.35-carbon)*6
