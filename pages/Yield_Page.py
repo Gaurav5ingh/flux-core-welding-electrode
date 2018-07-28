@@ -79,7 +79,7 @@ class YieldPage(tk.Frame):
 
         self.e_rec_p.delete(0,"end")
         self.e_rec_p.insert(0,100-ferrite)
-
+    
     def textEntries(self):              # takes the values entered by the user
         carbon = float(self.e_c.get())
         ferrite=(0.8-carbon)/(0.78)*100
@@ -95,3 +95,5 @@ class YieldPage(tk.Frame):
         yieldst=x**(0.33)*(35+58*(mn)+17.4*(1.0/(grainsize**(0.5))))+(1-x**0.33)*(178+3.8*(1.0/(sulphur**(0.5))))+63*(silicon)+425*nf
         self.Yield.delete(0,"end") 
         self.Yield.insert(0, yieldst)
+    
+    def check_entry(
