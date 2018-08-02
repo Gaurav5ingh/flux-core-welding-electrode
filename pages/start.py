@@ -1,3 +1,13 @@
+import tkinter as tk
+from pages import LARGE_FONT
+
+from pages.tensile import TensilePage
+from pages.ductility import DuctilityPage
+from pages.e81t1 import E81T1Page
+from pages.e91t1 import E91T1Page
+from pages.cse import CSEPage
+from pages.yieldst import YieldPage
+
 class StartPage(tk.Frame):
 
     def __init__(self, parent, controller):

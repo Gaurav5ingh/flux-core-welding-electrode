@@ -1,3 +1,7 @@
+import tkinter as tk
+from pages import LARGE_FONT
+import pages.start
+
 class E81T1Page(tk.Frame):
     
     def __init__(self, parent, controller):
@@ -8,5 +12,5 @@ class E81T1Page(tk.Frame):
                                     "to 558 Mpa.For selection of Tensile Strength in case of E81T1 grade,we will consider range from 523-593.", font=LARGE_FONT,wraplength=320)
         self.label.pack(pady=10, padx=10)
         button1 = tk.Button(self, text="Back to Home",
-                            command=lambda: controller.show_frame(StartPage))
+                            command=lambda: controller.show_frame(pages.start.StartPage))
         button1.pack()

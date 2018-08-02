@@ -1,3 +1,7 @@
+import tkinter as tk
+from tkinter import Label, Entry, IntVar, Button
+import pages.start
+
 class TensilePage(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -18,42 +22,44 @@ class TensilePage(tk.Frame):
         self.e_s = Entry(self, textvariable=IntVar())
         self.e_n = Entry(self, textvariable=IntVar())
     
-        main = Label(self, font=('25'), text="TENSILE STRENGTH", fg='BLUE')
-        main.pack(padx=10,pady=10)
+        main = Label(self, font=('25'), text="TENSILE STRENGTH",width=40, fg='BLUE', bg='lightblue')
+        main.grid(row=0, column=0, columnspan=2, padx=10,pady=10)
             
-        self.l_c.pack(padx=10,pady=10)
-        self.e_c.pack()
-        self.labelText = Label(self, text="Click 'Enter' to show Recommended Values").pack(padx=10,pady=10)
-        tk.Button(self, text="Enter", command=self.enterRecValues).pack(padx=5,pady=5)
+        self.l_c.grid(row=1, column=0,padx=10,pady=10, sticky='e')
+        self.e_c.grid(row=1, column=1)
+        self.labelText = Label(self, text="Click 'Enter' to show Recommended Values")
+        self.labelText.grid(row=2, column=0, columnspan=2, padx=10,pady=10)
+        tk.Button(self, text="Enter", command=self.enterRecValues).grid(row=3, column=0, columnspan=2, padx=5,pady=5)
         
-        self.l_rec_f.pack(padx=10,pady=10)
-        self.e_rec_f.pack()
+        self.l_rec_f.grid(row=4, column=0,padx=10,pady=10, sticky='e')
+        self.e_rec_f.grid(row=4, column=1)
         
-        self.l_rec_p.pack(padx=10,pady=10)
-        self.e_rec_p.pack()
+        self.l_rec_p.grid(row=5, column=0, padx=10,pady=10, sticky='e')
+        self.e_rec_p.grid(row=5, column=1)
 
-        self.l_gsize.pack(padx=10,pady=10)
-        self.e_gsize.pack()
+        self.l_gsize.grid(row=6, column=0,padx=10,pady=10, sticky='e')
+        self.e_gsize.grid(row=6, column=1)
         
-        self.l_si.pack(padx=10,pady=10)
-        self.e_si.pack()
+        self.l_si.grid(row=7, column=0, padx=10,pady=10, sticky='e')
+        self.e_si.grid(row=7, column=1)
         
-        self.l_s.pack(padx=10,pady=10)
-        self.e_s.pack()
+        self.l_s.grid(row=8, column=0, padx=10,pady=10, sticky='e')
+        self.e_s.grid(row=8, column=1)
         
-        self.l_n.pack(padx=10,pady=10)
-        self.e_n.pack()
+        self.l_n.grid(row=9, column=0, padx=10,pady=10, sticky='e')
+        self.e_n.grid(row=9, column=1)
         
-        self.labelText5 = Label(self, text="Tensile Strength = ").pack(padx=10,pady=10)    
+        self.labelText5 = Label(self, text="Tensile Strength = ")
+        self.labelText5.grid(row=10, column=0, padx=10,pady=10, sticky='e')
         self.Tensile=Entry(self)
-        self.Tensile.pack()
+        self.Tensile.grid(row=10, column=1)
 
         b1 = Button(self, text="CALCULATE", command=self.textEntries)
-        b1.pack(padx=10,pady=10)
+        b1.grid(row=11, column=0, columnspan=2, padx=10,pady=10)
         
         button1 = tk.Button(self, text="Back to Home",
-                        command=lambda: controller.show_frame(StartPage))
-        button1.pack(padx=10,pady=10)
+                        command=lambda: controller.show_frame(pages.start.StartPage))
+        button1.grid(row=12, column=0, columnspan=2, padx=10,pady=10)
 
     def enterRecValues(self):
         carbon=float(self.e_c.get())

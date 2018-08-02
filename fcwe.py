@@ -1,12 +1,6 @@
-import tkinter as tk
-from tkinter import *
-from tkinter import  ttk
-LARGE_FONT = ("Verdana", 12)
-
-
-
+import pages.controller
 
 
 if __name__ == '__main__':
-    app = pageController()
+    app = pages.controller.PageController()
     app.mainloop()

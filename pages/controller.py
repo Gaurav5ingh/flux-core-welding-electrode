@@ -1,4 +1,14 @@
-class pageController(tk.Tk):
+import tkinter as tk
+
+import pages.start
+import pages.tensile
+import pages.ductility
+import pages.e81t1
+import pages.e91t1
+import pages.cse
+import pages.yieldst
+
+class PageController(tk.Tk):
 
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
@@ -12,14 +22,21 @@ class pageController(tk.Tk):
 
         self.frames = {}
 
-        for F in (StartPage, TensilePage, DuctilityPage,E81T1Page,E91T1Page,CSEPage,YieldPage):
+        for F in (pages.start.StartPage,
+                    pages.tensile.TensilePage,
+                    pages.ductility.DuctilityPage,
+                    pages.e81t1.E81T1Page,
+                    pages.e91t1.E91T1Page,
+                    pages.cse.CSEPage,
+                    pages.yieldst.YieldPage):
+            
             frame = F(container, self)
 
             self.frames[F] = frame
 
             frame.grid(row=0, column=0, sticky="nsew")
 
-        self.show_frame(StartPage)
+        self.show_frame(pages.start.StartPage)
 
 
 

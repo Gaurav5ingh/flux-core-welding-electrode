@@ -1,3 +1,7 @@
+import tkinter as tk
+from tkinter import Label, Entry, IntVar, Button
+import pages.start
+
 class YieldPage(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -29,7 +33,8 @@ class YieldPage(tk.Frame):
         self.l_rec_c.pack()
         self.e_c.pack(padx=10,pady=10)
         
-        self.labelText = Label(self, text="Click 'Enter' to show Recommended Values").pack(padx=10,pady=10)
+        self.labelText = Label(self, text="Click 'Enter' to show Recommended Values")
+        self.labelText.pack(padx=10,pady=10)
         tk.Button(self, text="Enter", command=self.enterRecValues).pack(padx=5,pady=5)
 
         self.l_rec_f.pack()
@@ -53,7 +58,8 @@ class YieldPage(tk.Frame):
         self.l_nf.pack()
         self.e_nf.pack(padx=10,pady=10)
 
-        self.labelText = Label(self, text="Yield strength = ").pack(padx=10,pady=10)
+        self.labelText = Label(self, text="Yield strength = ")
+        self.labelText.pack(padx=10,pady=10)
 
         self.Yield = Entry(self)
         self.Yield.pack()
@@ -62,7 +68,7 @@ class YieldPage(tk.Frame):
         bt.pack()
 
         button1 = tk.Button(self, text="Back to Home",
-                    command=lambda: controller.show_frame(StartPage))
+                    command=lambda: controller.show_frame(pages.start.StartPage))
         button1.pack()
 
     def enterRecValues(self):          # shows recommended amounts on the basis of carbon content entered by the user
@@ -96,4 +102,4 @@ class YieldPage(tk.Frame):
         self.Yield.delete(0,"end") 
         self.Yield.insert(0, yieldst)
     
-    def check_entry(
+    #def check_entry(

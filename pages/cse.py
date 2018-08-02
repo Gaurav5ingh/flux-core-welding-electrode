@@ -1,3 +1,7 @@
+import tkinter as tk
+from tkinter import Label, Entry, IntVar, Button
+import pages.start
+
 class CSEPage(tk.Frame):
  
     def __init__(self, parent, controller):
@@ -25,7 +29,8 @@ class CSEPage(tk.Frame):
         main.pack(padx=10,pady=10)
         self.lab4.pack()
         self.ent4.pack(padx=10,pady=10)
-        self.labelText = Label(self, text="Click 'Enter' to show Recommended Values").pack(padx=10,pady=10)
+        self.labelText = Label(self, text="Click 'Enter' to show Recommended Values")
+        self.labelText.pack(padx=10,pady=10)
         tk.Button(self, text="Enter", command=self.enterRecValues).pack(padx=5,pady=5)
 
         self.labf.pack()
@@ -46,7 +51,8 @@ class CSEPage(tk.Frame):
         self.lab5.pack()
         self.ent5.pack(padx=10,pady=10)
          
-        self.labelText5 = Label(self, text="CSE = ").pack(padx=10,pady=10)
+        self.labelText5 = Label(self, text="CSE = ")
+        self.labelText5.pack(padx=10,pady=10)
         
         self.Cse = Entry(self)
         self.Cse.pack()
@@ -55,7 +61,7 @@ class CSEPage(tk.Frame):
         b1.pack(padx=10,pady=10)
         
         button1 = tk.Button(self, text="Back to Home",
-                            command=lambda: controller.show_frame(StartPage))
+                            command=lambda: controller.show_frame(pages.start.StartPage))
         button1.pack(padx=10,pady=10)
 
     def enterRecValues(self):
@@ -80,7 +86,8 @@ class CSEPage(tk.Frame):
         per=1-ferrite
         
         cse = 112 - 2.8 * grainsize - 0.18 * 300 - 832 * s - 43 * al - 0.76 * (1 - ferrite) * 100 + 107 * zr
-        self.labelText = Label(self, text="CSE = ").pack()
+        self.labelText = Label(self, text="CSE = ")
+        self.labelText.pack()
         
         self.Cse.delete(0,"end") 
         self.Cse.insert(0,cse)
