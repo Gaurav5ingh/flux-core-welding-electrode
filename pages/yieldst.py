@@ -16,7 +16,7 @@ class YieldPage(tk.Frame):
         self.l_s = Label(self, text="Sulphur in Wt%:")
         self.l_si = Label(self, text="Silicon in Wt%:")
         self.l_nf = Label(self,text="Nitrogen in Ferrite in Wt%")
-        main = Label(self, font=('25'), text="YIELD STRENGTH", fg='blue')
+        main = Label(self, font=('25'), text="YIELD STRENGTH", fg='blue', bg='lightblue')
 
         self.e_c = Entry(self, textvariable=IntVar())
         self.e_rec_f = Entry(self, textvariable=IntVar())
@@ -27,49 +27,48 @@ class YieldPage(tk.Frame):
         self.e_si = Entry(self, textvariable=IntVar())
         self.e_nf = Entry(self, textvariable=IntVar())
 
-        main.pack(padx=10,pady=10)
+        main.grid(row=0, column=0, columnspan=2, padx=10,pady=10, sticky='we')
 
-        self.l_c.pack()
-        self.l_rec_c.pack()
-        self.e_c.pack(padx=10,pady=10)
+        self.l_c.grid(row=2, column=0, sticky='e')
+        self.l_rec_c.grid(row=1, column=0, columnspan=2)
+        self.e_c.grid(row=2, column=1, padx=10,pady=10)
         
-        self.labelText = Label(self, text="Click 'Enter' to show Recommended Values")
-        self.labelText.pack(padx=10,pady=10)
-        tk.Button(self, text="Enter", command=self.enterRecValues).pack(padx=5,pady=5)
+        tk.Button(self, text="Show Recommended Values", command=self.enterRecValues) \
+            .grid(row=4, column=0, columnspan=2, padx=5,pady=5)
 
-        self.l_rec_f.pack()
-        self.e_rec_f.pack(padx=10,pady=10)
+        self.l_rec_f.grid(row=5, column=0, sticky='e')
+        self.e_rec_f.grid(row=5, column=1, padx=10,pady=10)
 
-        self.l_rec_p.pack()
-        self.e_rec_p.pack(padx=10,pady=10)
+        self.l_rec_p.grid(row=6, column=0, sticky='e')
+        self.e_rec_p.grid(row=6, column=1, padx=10,pady=10)
 
-        self.l_rec_mn.pack()
-        self.e_rec_mn.pack(padx=10,pady=10)        
+        self.l_rec_mn.grid(row=7, column=0, sticky='e')
+        self.e_rec_mn.grid(row=7, column=1, padx=10,pady=10)        
 
-        self.l_gsize.pack()
-        self.e_gsize.pack(padx=10,pady=10)
+        self.l_gsize.grid(row=8, column=0, sticky='e')
+        self.e_gsize.grid(row=8, column=1, padx=10,pady=10)
 
-        self.l_s.pack()
-        self.e_s.pack(padx=10,pady=10)
+        self.l_s.grid(row=9, column=0, sticky='e')
+        self.e_s.grid(row=9, column=1, padx=10,pady=10)
 
-        self.l_si.pack()
-        self.e_si.pack(padx=10,pady=10)
+        self.l_si.grid(row=10, column=0, sticky='e')
+        self.e_si.grid(row=10, column=1, padx=10,pady=10)
 
-        self.l_nf.pack()
-        self.e_nf.pack(padx=10,pady=10)
+        self.l_nf.grid(row=11, column=0, sticky='e')
+        self.e_nf.grid(row=11, column=1, padx=10,pady=10)
 
-        self.labelText = Label(self, text="Yield strength = ")
-        self.labelText.pack(padx=10,pady=10)
+        self.labelText = Label(self, text="Yield strength =")
+        self.labelText.grid(row=12, column=0, padx=10,pady=10, sticky='e')
 
         self.Yield = Entry(self)
-        self.Yield.pack()
+        self.Yield.grid(row=12, column=1)
         
         bt = Button(self, text="CALCULATE", command=self.textEntries)
-        bt.pack()
+        bt.grid(row=13, column=0, columnspan=2, padx=10, pady=10)
 
         button1 = tk.Button(self, text="Back to Home",
                     command=lambda: controller.show_frame(pages.start.StartPage))
-        button1.pack()
+        button1.grid(row=14, column=0, columnspan=2, padx=10, pady=10)
 
     def enterRecValues(self):          # shows recommended amounts on the basis of carbon content entered by the user
         carbon = float(self.e_c.get())
@@ -98,8 +97,15 @@ class YieldPage(tk.Frame):
         pearlite=100-ferrite
         x=ferrite/100
 
-        yieldst=x**(0.33)*(35+58*(mn)+17.4*(1.0/(grainsize**(0.5))))+(1-x**0.33)*(178+3.8*(1.0/(sulphur**(0.5))))+63*(silicon)+425*nf
+        result = None
+        try:
+            yieldst=x**(0.33)*(35+58*(mn)+17.4*(1.0/(grainsize**(0.5))))+(1-x**0.33)*(178+3.8*(1.0/(sulphur**(0.5))))+63*(silicon)+425*nf
+        except ZeroDivisionError:
+            result = 'div by 0 exception!'
+        else:
+            result = yieldst
+        
         self.Yield.delete(0,"end") 
-        self.Yield.insert(0, yieldst)
+        self.Yield.insert(0, result)
     
     #def check_entry(

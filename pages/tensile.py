@@ -27,9 +27,7 @@ class TensilePage(tk.Frame):
             
         self.l_c.grid(row=1, column=0,padx=10,pady=10, sticky='e')
         self.e_c.grid(row=1, column=1)
-        self.labelText = Label(self, text="Click 'Enter' to show Recommended Values")
-        self.labelText.grid(row=2, column=0, columnspan=2, padx=10,pady=10)
-        tk.Button(self, text="Enter", command=self.enterRecValues).grid(row=3, column=0, columnspan=2, padx=5,pady=5)
+        tk.Button(self, text="Show Recommended Values", command=self.enterRecValues).grid(row=3, column=0, columnspan=2, padx=5,pady=5)
         
         self.l_rec_f.grid(row=4, column=0,padx=10,pady=10, sticky='e')
         self.e_rec_f.grid(row=4, column=1)
@@ -49,7 +47,7 @@ class TensilePage(tk.Frame):
         self.l_n.grid(row=9, column=0, padx=10,pady=10, sticky='e')
         self.e_n.grid(row=9, column=1)
         
-        self.labelText5 = Label(self, text="Tensile Strength = ")
+        self.labelText5 = Label(self, text="Tensile Strength =")
         self.labelText5.grid(row=10, column=0, padx=10,pady=10, sticky='e')
         self.Tensile=Entry(self)
         self.Tensile.grid(row=10, column=1)
