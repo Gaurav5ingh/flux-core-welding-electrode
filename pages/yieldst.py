@@ -6,7 +6,9 @@ class YieldPage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-
+        
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=1)
         self.l_c = Label(self,text="Carbon in Wt%:")
         self.l_rec_c = Label(self, text="Recommended:The range should lie within 0.05-0.07.",wraplength=500)
         self.l_rec_f = Label(self, text="Ferrite recommended value in Wt%:")
@@ -27,41 +29,41 @@ class YieldPage(tk.Frame):
         self.e_si = Entry(self, textvariable=IntVar())
         self.e_nf = Entry(self, textvariable=IntVar())
 
-        main.grid(row=0, column=0, columnspan=2, padx=10,pady=10, sticky='we')
+        main.grid(row=0, column=0, columnspan=2, pady=10, sticky='we')
 
         self.l_c.grid(row=2, column=0, sticky='e')
         self.l_rec_c.grid(row=1, column=0, columnspan=2)
-        self.e_c.grid(row=2, column=1, padx=10,pady=10)
+        self.e_c.grid(row=2, column=1, padx=5, pady=5, sticky='w')
         
         tk.Button(self, text="Show Recommended Values", command=self.enterRecValues) \
             .grid(row=4, column=0, columnspan=2, padx=5,pady=5)
 
         self.l_rec_f.grid(row=5, column=0, sticky='e')
-        self.e_rec_f.grid(row=5, column=1, padx=10,pady=10)
+        self.e_rec_f.grid(row=5, column=1, padx=5, pady=5, sticky='w')
 
         self.l_rec_p.grid(row=6, column=0, sticky='e')
-        self.e_rec_p.grid(row=6, column=1, padx=10,pady=10)
+        self.e_rec_p.grid(row=6, column=1, padx=5, pady=5, sticky='w')
 
         self.l_rec_mn.grid(row=7, column=0, sticky='e')
-        self.e_rec_mn.grid(row=7, column=1, padx=10,pady=10)        
+        self.e_rec_mn.grid(row=7, column=1, padx=5, pady=5, sticky='w')        
 
         self.l_gsize.grid(row=8, column=0, sticky='e')
-        self.e_gsize.grid(row=8, column=1, padx=10,pady=10)
+        self.e_gsize.grid(row=8, column=1, padx=5, pady=5, sticky='w')
 
         self.l_s.grid(row=9, column=0, sticky='e')
-        self.e_s.grid(row=9, column=1, padx=10,pady=10)
+        self.e_s.grid(row=9, column=1, padx=5, pady=5, sticky='w')
 
         self.l_si.grid(row=10, column=0, sticky='e')
-        self.e_si.grid(row=10, column=1, padx=10,pady=10)
+        self.e_si.grid(row=10, column=1, padx=5, pady=5, sticky='w')
 
         self.l_nf.grid(row=11, column=0, sticky='e')
-        self.e_nf.grid(row=11, column=1, padx=10,pady=10)
+        self.e_nf.grid(row=11, column=1, padx=5, pady=5, sticky='w')
 
         self.labelText = Label(self, text="Yield strength =")
-        self.labelText.grid(row=12, column=0, padx=10,pady=10, sticky='e')
+        self.labelText.grid(row=12, column=0, sticky='e')
 
         self.Yield = Entry(self)
-        self.Yield.grid(row=12, column=1)
+        self.Yield.grid(row=12, column=1, padx=5, pady=5, sticky='w')
         
         bt = Button(self, text="CALCULATE", command=self.textEntries)
         bt.grid(row=13, column=0, columnspan=2, padx=10, pady=10)

@@ -6,6 +6,8 @@ class CSEPage(tk.Frame):
  
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=1)
         self.lab1 = Label(self, text="Grainsize dia in ASTM:")
         self.lab2 = Label(self, text="Sulphur in Wt%:")
         self.lab3 = Label(self, text="Aluminium in Wt%:")
@@ -26,34 +28,34 @@ class CSEPage(tk.Frame):
         self.labp=Label(self,text="Recommended value of Pearlite in Wt%:")
         self.entp=Entry(self, textvariable=IntVar())
         
-        main.grid(row=0, column=0, columnspan=2, padx=10,pady=10, sticky='we')
+        main.grid(row=0, column=0, columnspan=2, pady=10, sticky='we')
         self.lab4.grid(row=1, column=0, sticky='e')
-        self.ent4.grid(row=1, column=1, padx=10,pady=10)
+        self.ent4.grid(row=1, column=1, padx=5, pady=5, sticky='w')
         tk.Button(self, text="Show Recommended Values", command=self.enterRecValues).grid(row=3, column=0, columnspan=2, padx=5,pady=5)
 
         self.labf.grid(row=4, column=0, sticky='e')
-        self.entf.grid(row=4, column=1, padx=10,pady=10)
+        self.entf.grid(row=4, column=1, padx=5, pady=5, sticky='w')
 
         self.labp.grid(row=5, column=0, sticky='e')
-        self.entp.grid(row=5, column=1, padx=10,pady=10)
+        self.entp.grid(row=5, column=1, padx=5, pady=5, sticky='w')
 
         self.lab1.grid(row=6, column=0, sticky='e')
-        self.ent1.grid(row=6, column=1, padx=10,pady=10)
+        self.ent1.grid(row=6, column=1, padx=5, pady=5, sticky='w')
 
         self.lab2.grid(row=7, column=0, sticky='e')
-        self.ent2.grid(row=7, column=1, padx=10,pady=10)
+        self.ent2.grid(row=7, column=1, padx=5, pady=5, sticky='w')
 
         self.lab3.grid(row=8, column=0, sticky='e')
-        self.ent3.grid(row=8, column=1, padx=10,pady=10)
+        self.ent3.grid(row=8, column=1, padx=5, pady=5, sticky='w')
 
         self.lab5.grid(row=9, column=0, sticky='e')
-        self.ent5.grid(row=9, column=1, padx=10,pady=10)
+        self.ent5.grid(row=9, column=1, padx=5, pady=5, sticky='w')
          
-        self.labelText5 = Label(self, text="CSE = ")
-        self.labelText5.grid(row=10, column=0, padx=10,pady=10, sticky='e')
+        self.labelText5 = Label(self, text="CSE =")
+        self.labelText5.grid(row=10, column=0, sticky='e')
         
         self.Cse = Entry(self)
-        self.Cse.grid(row=10, column=1)
+        self.Cse.grid(row=10, column=1, padx=5, pady=5, sticky='w')
         
         b1 = Button(self, text="CALCULATE", command=self.textEntries)
         b1.grid(row=11, column=0, columnspan=2, padx=10,pady=10)

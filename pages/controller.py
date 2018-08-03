@@ -12,15 +12,18 @@ class PageController(tk.Tk):
 
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
-        self.resizable(False, False)
-        container = tk.Frame(self)
-        canvas = tk.Canvas(self, borderwidth=0, background="#ffffff")
-        frame = tk.Frame(canvas, background="#ffffff")
+        # self.resizable(False, False)
+        self.container = tk.Frame(self)
+        # canvas = tk.Canvas(self, borderwidth=0, background="#ffffff")
+        # frame = tk.Frame(canvas, background="#ffffff")
         #container.pack(side="top", fill="both", expand=True)
-        container.grid(row=0, column=0, sticky='we')
+        self.container.grid(row=0, column=0, columnspan=2, sticky='nswe')
+        self.container.grid_propagate(True)
 
-        # container.grid_rowconfigure(0, weight=1)
-        # container.grid_columnconfigure(0, weight=1)
+        # self.container.grid_rowconfigure(0, weight=1)
+        # self.container.columnconfigure(0, weight=1)
+        self.container.grid_columnconfigure(0, weight=1)
+        self.container.grid_columnconfigure(1, weight=1)
 
         self.frames = {}
 
@@ -32,11 +35,13 @@ class PageController(tk.Tk):
                     pages.cse.CSEPage,
                     pages.yieldst.YieldPage):
             
-            frame = F(parent=container, controller=self)
+            frame = F(parent=self.container, controller=self)
 
             self.frames[F] = frame
+            # frame.columnconfigure(0, weight=1)
+            # frame.grid_columnconfigure(0, weight=1)
 
-            frame.grid(row=0, column=0, sticky="nsew")
+            frame.grid(row=1, column=0, columnspan=2, sticky="nsew")
 
         self.show_frame(pages.start.StartPage)
 

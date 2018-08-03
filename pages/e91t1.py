@@ -6,6 +6,8 @@ class E91T1Page(tk.Frame):
     
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=1)
         self.label = tk.Label(self, text="E91T1", font=LARGE_FONT)
         self.label.grid(row=0, column=0, pady=10, padx=10)
         self.label = tk.Label(self, text="The grade of electrode is decided by Tensile Strength.In E91T1,91 denotes the Tensile Strength.91 corresponds to 91000 Psi which is equivalself.ent "

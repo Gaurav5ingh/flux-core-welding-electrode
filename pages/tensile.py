@@ -6,6 +6,9 @@ class TensilePage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=1)
+
         self.l_c = Label(self, text='Carbon in Wt%:')
         self.l_rec_f = Label(self, text="Ferrite recommended value in wt%:")
         self.l_rec_p = Label(self, text="Pearlite recommended value in wt%:")
@@ -23,34 +26,34 @@ class TensilePage(tk.Frame):
         self.e_n = Entry(self, textvariable=IntVar())
     
         main = Label(self, font=('25'), text="TENSILE STRENGTH",width=40, fg='BLUE', bg='lightblue')
-        main.grid(row=0, column=0, columnspan=2, padx=10,pady=10)
+        main.grid(row=0, column=0, columnspan=2, pady=10)
             
-        self.l_c.grid(row=1, column=0,padx=10,pady=10, sticky='e')
-        self.e_c.grid(row=1, column=1)
+        self.l_c.grid(row=1, column=0, sticky='e')
+        self.e_c.grid(row=1, column=1, padx=5, pady=5, sticky='w')
         tk.Button(self, text="Show Recommended Values", command=self.enterRecValues).grid(row=3, column=0, columnspan=2, padx=5,pady=5)
         
-        self.l_rec_f.grid(row=4, column=0,padx=10,pady=10, sticky='e')
-        self.e_rec_f.grid(row=4, column=1)
+        self.l_rec_f.grid(row=4, column=0, sticky='e')
+        self.e_rec_f.grid(row=4, column=1, padx=5, pady=5, sticky='w')
         
-        self.l_rec_p.grid(row=5, column=0, padx=10,pady=10, sticky='e')
-        self.e_rec_p.grid(row=5, column=1)
+        self.l_rec_p.grid(row=5, column=0, sticky='e')
+        self.e_rec_p.grid(row=5, column=1, padx=5, pady=5, sticky='w')
 
-        self.l_gsize.grid(row=6, column=0,padx=10,pady=10, sticky='e')
-        self.e_gsize.grid(row=6, column=1)
+        self.l_gsize.grid(row=6, column=0, sticky='e')
+        self.e_gsize.grid(row=6, column=1, padx=5, pady=5, sticky='w')
         
-        self.l_si.grid(row=7, column=0, padx=10,pady=10, sticky='e')
-        self.e_si.grid(row=7, column=1)
+        self.l_si.grid(row=7, column=0, sticky='e')
+        self.e_si.grid(row=7, column=1, padx=5, pady=5, sticky='w')
         
-        self.l_s.grid(row=8, column=0, padx=10,pady=10, sticky='e')
-        self.e_s.grid(row=8, column=1)
+        self.l_s.grid(row=8, column=0, sticky='e')
+        self.e_s.grid(row=8, column=1, padx=5, pady=5, sticky='w')
         
-        self.l_n.grid(row=9, column=0, padx=10,pady=10, sticky='e')
-        self.e_n.grid(row=9, column=1)
+        self.l_n.grid(row=9, column=0, sticky='e')
+        self.e_n.grid(row=9, column=1, padx=5, pady=5, sticky='w')
         
         self.labelText5 = Label(self, text="Tensile Strength =")
-        self.labelText5.grid(row=10, column=0, padx=10,pady=10, sticky='e')
+        self.labelText5.grid(row=10, column=0, sticky='e')
         self.Tensile=Entry(self)
-        self.Tensile.grid(row=10, column=1)
+        self.Tensile.grid(row=10, column=1, padx=5, pady=5, sticky='w')
 
         b1 = Button(self, text="CALCULATE", command=self.textEntries)
         b1.grid(row=11, column=0, columnspan=2, padx=10,pady=10)
